@@ -1,0 +1,71 @@
+﻿<TabItem x:Class="SoftwareLab.Items.Item3"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         mc:Ignorable="d" 
+         d:DesignWidth="800"
+         d:DesignHeight="450"
+         Header="Задание 3">
+
+    <TabItem.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border
+                Grid.Column="0"
+                Height="200"
+                Margin="10"
+                BorderThickness="2"
+                BorderBrush="{
+                    Binding Result, 
+                    Mode=OneWay, 
+                    UpdateSourceTrigger=PropertyChanged}">
+                <StackPanel>
+                    <Grid
+                        Width="100"
+                        Height="100">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Text="Нажми ЛКМ"/>
+                        <Rectangle
+                            Fill="{
+                                Binding FirstBrush,
+                                FallbackValue='Black',
+                                Mode=OneWay, 
+                                UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+                    
+                    <Grid
+                        Width="100"
+                        Height="100">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Text="Нажми ПКМ"/>
+
+                        <Rectangle
+                            Fill="{
+                                Binding SecondBrush,
+                                FallbackValue='Black',
+                                Mode=OneWay, 
+                                UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <Image
+                x:Name="Image"
+                Grid.Column="1"
+                Source="{
+                    Binding ChessModel.ChessImage, 
+                    Mode=OneWay}"
+                MouseLeftButtonDown="Image_OnMouseLeftButtonDown"
+                MouseRightButtonDown="Image_OnMouseRightButtonDown"/>
+        </Grid>
+    </TabItem.Content>
+</TabItem>

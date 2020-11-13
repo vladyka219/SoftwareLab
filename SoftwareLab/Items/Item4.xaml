@@ -1,0 +1,179 @@
+﻿<TabItem x:Class="SoftwareLab.Items.Item4"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:converters="clr-namespace:SoftwareLab.Converters"
+         mc:Ignorable="d" 
+         d:DesignWidth="800"
+         d:DesignHeight="450"
+         Header="Задание 4">
+
+    <TabItem.Resources>
+        <converters:OffsetConverter x:Key="OffsetConverter"/>
+        <converters:TextMaskConverter x:Key="TextMaskConverter"/>
+
+        <Style TargetType="{x:Type Thumb}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <Ellipse
+                                Width="20"
+                                Height="20"
+                                Fill="#FFF9BABA"
+                                Stroke="Red"
+                                StrokeThickness="1"/>
+
+                            <Ellipse
+                                Width="3"
+                                Height="3"
+                                Fill="Red"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </TabItem.Resources>
+
+    <TabItem.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Площадь треугольника: "/>
+
+                <TextBlock
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Text="{
+                        Binding Square,
+                        FallbackValue='0',
+                        Mode=OneWay, 
+                        Converter={StaticResource TextMaskConverter},
+                        UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+
+            <Canvas 
+                Grid.Row="1"
+                ClipToBounds="True">
+                <Polygon
+                    x:Name="Polygon"
+                    Fill="LightPink"/>
+
+                <Thumb
+                    Width="20"
+                    Height="20"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    Canvas.Left="{
+                        Binding Point1.X, 
+                        Mode=OneWay, 
+                        Converter={StaticResource OffsetConverter},
+                        ConverterParameter=10,
+                        UpdateSourceTrigger=PropertyChanged}"
+                    Canvas.Top="{
+                        Binding Point1.Y, 
+                        Mode=OneWay,
+                        Converter={StaticResource OffsetConverter},
+                        ConverterParameter=10,
+                        UpdateSourceTrigger=PropertyChanged}"
+                    DragDelta="Thumb1_OnDragDelta"/>
+
+                <TextBlock
+                    Text="{
+                        Binding Point1, 
+                        Mode=OneWay,
+                        UpdateSourceTrigger=PropertyChanged}"
+                    Canvas.Left="{
+                        Binding Point1.X, 
+                        Mode=OneWay, 
+                        Converter={StaticResource OffsetConverter},
+                        ConverterParameter=-10,
+                        UpdateSourceTrigger=PropertyChanged}"
+                    Canvas.Top="{
+                        Binding Point1.Y, 
+                        Mode=OneWay,
+                        Converter={StaticResource OffsetConverter},
+                        ConverterParameter=-10,
+                        UpdateSourceTrigger=PropertyChanged}"/>
+                <Thumb
+                    Width="20"
+                    Height="20"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    Canvas.Left="{
+                        Binding Point2.X, 
+                        Mode=OneWay, 
+                        Converter={StaticResource OffsetConverter},
+                        ConverterParameter=10,
+                        UpdateSourceTrigger=PropertyChanged}"
+                    Canvas.Top="{
+                        Binding Point2.Y, 
+                        Mode=OneWay,
+                        Converter={StaticResource OffsetConverter},
+                        ConverterParameter=10,
+                        UpdateSourceTrigger=PropertyChanged}"
+                    DragDelta="Thumb2_OnDragDelta"/>
+
+                <TextBlock
+                    Text="{
+                        Binding Point2, 
+                        Mode=OneWay, 
+                        UpdateSourceTrigger=PropertyChanged}"
+                    Canvas.Left="{
+                        Binding Point2.X, 
+                        Mode=OneWay, 
+                        Converter={StaticResource OffsetConverter},
+                        ConverterParameter=-10,
+                        UpdateSourceTrigger=PropertyChanged}"
+                    Canvas.Top="{
+                        Binding Point2.Y, 
+                        Mode=OneWay,
+                        Converter={StaticResource OffsetConverter},
+                        ConverterParameter=-10,
+                        UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Thumb
+                    Width="20"
+                    Height="20"
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    Canvas.Left="{
+                        Binding Point3.X, 
+                        Mode=OneWay,
+                        Converter={StaticResource OffsetConverter},
+                        ConverterParameter=10,
+                        UpdateSourceTrigger=PropertyChanged}"
+                    Canvas.Top="{
+                        Binding Point3.Y, 
+                        Mode=OneWay,
+                        Converter={StaticResource OffsetConverter},
+                        ConverterParameter=10,
+                        UpdateSourceTrigger=PropertyChanged}"
+                    DragDelta="Thumb3_OnDragDelta"/>
+
+                <TextBlock
+                    Text="{
+                        Binding Point3, 
+                        Mode=OneWay, 
+                        UpdateSourceTrigger=PropertyChanged}"
+                    Canvas.Left="{
+                        Binding Point3.X, 
+                        Mode=OneWay, 
+                        Converter={StaticResource OffsetConverter},
+                        ConverterParameter=-10,
+                        UpdateSourceTrigger=PropertyChanged}"
+                    Canvas.Top="{
+                        Binding Point3.Y, 
+                        Mode=OneWay,
+                        Converter={StaticResource OffsetConverter},
+                        ConverterParameter=-10,
+                        UpdateSourceTrigger=PropertyChanged}"/>
+            </Canvas>
+        </Grid>
+    </TabItem.Content>
+</TabItem>
