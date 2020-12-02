@@ -66,7 +66,11 @@
     <Compile Include="Items\Item4.xaml.cs">
       <DependentUpon>Item4.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Items\Item5.xaml.cs">
+      <DependentUpon>Item5.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\ChessModel.cs" />
+    <Compile Include="Models\GraphModel.cs" />
     <Compile Include="Models\SplitNumbersModel.cs" />
     <Compile Include="Models\TriangleModel.cs" />
     <Compile Include="ViewModels\ChessViewModel.cs" />
@@ -84,6 +88,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Items\Item4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Items\Item5.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
